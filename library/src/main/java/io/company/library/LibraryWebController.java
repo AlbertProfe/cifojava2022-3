@@ -18,7 +18,7 @@ public class LibraryWebController {
         containerToView.addAttribute("booksfromController",
                 bookService.queryBooksFromArray());
 
-        System.out.println("Controller Web request ...");
+        //System.out.println("Controller Web request ...");
 
         return "web";
     }
