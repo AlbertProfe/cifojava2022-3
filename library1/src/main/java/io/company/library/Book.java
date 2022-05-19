@@ -24,4 +24,11 @@ public class Book {
     @Column(name="ISBN")
     private String isbn;
 
+    public Book(String title, String author, int pages, int publishedYear, String isbn) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.publishedYear = publishedYear;
+        this.isbn = isbn;
+    }
 }
