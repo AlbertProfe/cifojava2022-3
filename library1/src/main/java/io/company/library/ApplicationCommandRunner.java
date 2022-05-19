@@ -36,6 +36,7 @@ import java.util.Scanner;
 
             Scanner reader = new Scanner(System.in);
             System.out.println("Reading hello Spring Boot Command Line Runner: " + reader.nextLine());
+            //it works
 
 
         }
