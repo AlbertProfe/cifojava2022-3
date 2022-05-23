@@ -32,8 +32,9 @@ public class LibraryRestController {
     }
 
     //CRUD: create
-    @PostMapping("addBook")
-    public Book addBook(Book book){
+    @PostMapping(path="addBook", consumes = "application/JSON")
+    public Book addBook(@RequestBody Book book){
+
 
         Book bookCreated = bookservice.createBook(book);
 
