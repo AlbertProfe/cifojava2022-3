@@ -19,7 +19,7 @@ import java.util.Scanner;
         public void run(String... args) throws Exception {
 
             Scanner reader = new Scanner(System.in);
-            createBooks();
+           //createBooks();
             createOneBook(reader);
 
         }
@@ -55,7 +55,7 @@ import java.util.Scanner;
             System.out.println("Year Published? ");
             int publishedYear = reader.nextInt();
             System.out.println("ISBN? ");
-            String isbn = reader.nextLine();
+            String isbn = reader.next();
 
             bookService.createBook(new Book(title, author, pages, publishedYear, isbn));
 
