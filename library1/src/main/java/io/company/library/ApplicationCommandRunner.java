@@ -20,6 +20,7 @@ import java.util.Scanner;
 
             Scanner reader = new Scanner(System.in);
             //createBooks();
+            //createFakerBooks();
             //createOneBook(reader);
 
         }
@@ -38,6 +39,15 @@ import java.util.Scanner;
             bookService.createBook(book4);
 
             logger.info("finishing createBooks ...");
+
+
+        }
+
+        public void createFakerBooks(){
+            logger.info("Welcome to the createFakerBooks");
+
+
+            logger.info("finishing createFakerBooks ...");
 
 
         }

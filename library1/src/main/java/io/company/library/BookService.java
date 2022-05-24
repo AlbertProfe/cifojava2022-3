@@ -35,10 +35,8 @@ public class BookService {
         return null;
     }
 
-    public  void deleteBookById(Long id){
-        //Find out IF this id-book IS in our DB
+    public void deleteBookById(Long id){
         bookRepository.deleteById(id);
-
     }
 
     public  Book deleteBookByTitle(String title){

@@ -1,6 +1,7 @@
 package io.company.library;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.Optional;
@@ -42,25 +43,41 @@ public class LibraryRestController {
     @DeleteMapping("deleteBook")
     public ResponseEntity<Book> deleteBook (@RequestParam Long id) {
         //
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("operation","deleteBook");
+        headers.add("version","api 1.0");
+
         Optional<Book> bookFound  = bookservice.findBookById(id);
         boolean isBook = bookFound.isPresent();
         if(isBook) {
+            //Optional<Book> deletedBook = bookservice.deleteBookById(id);
             bookservice.deleteBookById(id);
-            return  ResponseEntity.accepted().body(bookFound.get());
+            headers.add("operationStatus","deleted");
+            return  ResponseEntity.accepted().headers(headers).body(bookFound.get());
         } else return ResponseEntity.accepted().body(null);
 
 
     }
 
     //CRUD: update
-    public ResponseEntity<Book> updateBook (@RequestBody Book bookToUpdate){
-        //find book by id >> bookFound
-        // if exists .... let s compare
-        // field by field
-        // bookToUpdate to bookFound
-        //bookservice.updateBook():
+    @PutMapping("/updateBook/{id}")
+    public ResponseEntity<Book> updateBook (@PathVariable Long id, @RequestBody Book dataBook) {
 
-        return null;
+        Optional<Book> bookFound = bookservice.findBookById(id);
+
+        if (bookFound.isPresent()) {
+
+            Book bookToUpdate = bookFound.get();
+
+            if  (dataBook.getTitle() != null) {
+                bookToUpdate.setTitle(dataBook.getTitle());
+            }
+
+            Book bookUpdated = bookservice.updateBook(bookToUpdate);
+            return ResponseEntity.accepted().body(bookUpdated);
+        } else  return ResponseEntity.accepted().body(null);
+
+
     }
 
 
