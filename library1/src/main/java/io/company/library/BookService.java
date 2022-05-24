@@ -1,9 +1,6 @@
 package io.company.library;
 
-
-import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,20 +35,21 @@ public class BookService {
         return null;
     }
 
-    public  Book deleteBookById(Long id){
+    public  void deleteBookById(Long id){
         //Find out IF this id-book IS in our DB
+        bookRepository.deleteById(id);
 
-
-        //
-        return null;
     }
 
     public  Book deleteBookByTitle(String title){
         //Find out IF this id-book IS in our DB
-
         Optional<Book> deletedBook = bookRepository.deleteBookByTitle(title);
         //
         return null;
+    }
+
+    public Book updateBook (Book book){
+        return bookRepository.save(book);
     }
 
 
