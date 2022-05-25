@@ -30,20 +30,18 @@ public class BookService {
     }
 
     public Optional<Book> findBookByTitle(String title){
-        bookRepository.findBookByTitle(title);
+        return bookRepository.findBookByTitle(title);
+    }
 
+    public Book deleteBookByTitle(String title){
+        //Find out IF this id-book IS in our DB
+        Optional<Book> deletedBook = bookRepository.deleteBookByTitle(title);
+        //
         return null;
     }
 
     public void deleteBookById(Long id){
         bookRepository.deleteById(id);
-    }
-
-    public  Book deleteBookByTitle(String title){
-        //Find out IF this id-book IS in our DB
-        Optional<Book> deletedBook = bookRepository.deleteBookByTitle(title);
-        //
-        return null;
     }
 
     public Book updateBook (Book book){

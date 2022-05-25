@@ -9,11 +9,10 @@ import java.util.Optional;
 @RestController
 @RequestMapping("api")
 public class LibraryRestController {
-
+    //here we are creating our end-point rest API
     @Autowired
     BookService bookservice;
 
-    //here we are creating our end-point rest API
     //CRUD: read
     @GetMapping("books")
     public Iterable<Book> getAllBooks() {
@@ -66,17 +65,31 @@ public class LibraryRestController {
         Optional<Book> bookFound = bookservice.findBookById(id);
 
         if (bookFound.isPresent()) {
-
             Book bookToUpdate = bookFound.get();
-
+            //
             if  (dataBook.getTitle() != null) {
                 bookToUpdate.setTitle(dataBook.getTitle());
             }
 
             Book bookUpdated = bookservice.updateBook(bookToUpdate);
             return ResponseEntity.accepted().body(bookUpdated);
-        } else  return ResponseEntity.accepted().body(null);
+        } else
+            return ResponseEntity.accepted().body(null);
 
+    }
+
+    //CRUD: delete book by title
+    @DeleteMapping("deleteBookByTitle")
+    public ResponseEntity<Book> deleteBookByTitle (@RequestParam String title) {
+        //
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("operation","deleteBookByTitle");
+        headers.add("version","api 1.0");
+
+        //findBookByTitle(String title)
+        //deleteBookByTitle(String title)
+
+        return null;
 
     }
 
