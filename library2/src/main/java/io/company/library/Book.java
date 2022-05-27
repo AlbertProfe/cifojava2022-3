@@ -1,11 +1,12 @@
 package io.company.library;
 
 //https://projectlombok.org/features/all
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import javax.persistence.*;
 
 
-@Getter @Setter @ToString @NoArgsConstructor @AllArgsConstructor
+@Getter @Setter @NoArgsConstructor @AllArgsConstructor
 @Entity(name="Book")
 @Table(name="BOOK_TABLE")
 public class Book {
@@ -17,6 +18,7 @@ public class Book {
     @Column(name="BOOK_TITLE")
     private String title;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="AUTHOR_FK")
     private Author authorId;
@@ -33,5 +35,17 @@ public class Book {
         this.pages = pages;
         this.publishedYear = publishedYear;
         this.isbn = isbn;
+    }
+
+    @Override
+    public String toString() {
+        return "Book{" +
+                "bookId=" + bookId +
+                ", title='" + title + '\'' +
+                ", authorName=" + authorId.getFirstName() +
+                ", pages=" + pages +
+                ", publishedYear=" + publishedYear +
+                ", isbn='" + isbn + '\'' +
+                '}';
     }
 }

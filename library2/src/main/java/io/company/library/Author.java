@@ -7,7 +7,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter @Setter @ToString @NoArgsConstructor @AllArgsConstructor
+@Getter @Setter @NoArgsConstructor @AllArgsConstructor
 @Entity(name="Author")
 @Table(name="AUTHOR_TABLE")
 public class Author {
@@ -24,20 +24,30 @@ public class Author {
     private LocalDate dob;
 
     @OneToMany(mappedBy = "authorId", cascade = CascadeType.ALL )
-    private List<Book> books = new ArrayList<Book>();
+    private List<Book> books = new ArrayList<Book>();;
 
     //constructor without ID
-    public Author(String firstName, String lastName, LocalDate dof){
+    public Author(String firstName, String lastName, LocalDate dob){
         this.firstName = firstName;
         this.lastName = lastName;
         this.dob = dob;
-
     }
+
+    //method to add books to books
     public void addBook(Book book) {
-        this.books.add(book);
+        this.getBooks().add(book);
         if (book.getAuthorId() != null) book.getAuthorId().getBooks().remove(book);
         book.setAuthorId(this);
     }
-    //method to add books to books
 
+    @Override
+    public String toString() {
+        return "Author{" +
+                "authorId=" + authorId +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", dob=" + dob +
+                ", books=" + books +
+                '}';
+    }
 }
