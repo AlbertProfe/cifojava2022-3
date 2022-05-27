@@ -1,4 +1,4 @@
-package io.company.library;
+package io.company.library.model;
 
 //https://projectlombok.org/features/all
 import lombok.*;
@@ -24,7 +24,7 @@ public class Author {
     private LocalDate dob;
 
     @OneToMany(mappedBy = "authorId", cascade = CascadeType.ALL )
-    private List<Book> books = new ArrayList<Book>();;
+    private List<Book> books = new ArrayList<Book>();
 
     //constructor without ID
     public Author(String firstName, String lastName, LocalDate dob){

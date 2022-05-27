@@ -1,5 +1,7 @@
-package io.company.library;
+package io.company.library.service;
 
+import io.company.library.model.Author;
+import io.company.library.repository.AuthorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.Optional;

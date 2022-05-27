@@ -1,5 +1,11 @@
 package io.company.library;
 
+import io.company.library.model.Author;
+import io.company.library.model.Book;
+import io.company.library.repository.AuthorRepository;
+import io.company.library.repository.BookRepository;
+import io.company.library.service.AuthorService;
+import io.company.library.service.BookService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

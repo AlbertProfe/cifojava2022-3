@@ -1,5 +1,7 @@
-package io.company.library;
+package io.company.library.controller;
 
+import io.company.library.model.Author;
+import io.company.library.service.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

@@ -1,7 +1,8 @@
-package io.company.library;
+package io.company.library.model;
 
 //https://projectlombok.org/features/all
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.company.library.model.Author;
 import lombok.*;
 import javax.persistence.*;
 

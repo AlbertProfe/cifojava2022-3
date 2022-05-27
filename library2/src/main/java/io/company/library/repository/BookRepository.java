@@ -1,5 +1,6 @@
-package io.company.library;
+package io.company.library.repository;
 
+import io.company.library.model.Book;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.Optional;

@@ -1,4 +1,4 @@
-package io.company.library;
+package io.company.library.configuration;
 
 
 import org.springframework.context.annotation.Bean;
