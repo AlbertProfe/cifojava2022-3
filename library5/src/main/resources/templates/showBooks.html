@@ -7,15 +7,16 @@
 <body>
 <div class="w3-panel w3-padding-32">
     <h1>Spring Boot Books Example .....</h1>
-    <h3>table of static books</h3>
+    <h3>table of books from @Controller @Service @Repository and H2 DB</h3>
 
     <table class="w3-table-all w3-hoverable" >
         <tr th:each="book:${booksfromController}">
 
+            <td th:text="${book.bookId}"></td>
             <td th:text="${book.title}"></td>
-            <td th:text="${book.ISBN}"></td>
+            <td th:text="${book.isbn}"></td>
             <td th:text="${book.pages}"></td>
-            <td th:text="${book.year}"></td>
+            <td th:text="${book.publishedYear}"></td>
             <td th:text="${book.author}"></td>
 
             <td> <a th:href ="@{deleteBook(titleFromView=${book.title})}"
@@ -28,7 +29,7 @@
     </table>
 
     <p>
-        <a th:href="@{/books/newBook}" class="w3-button w3-blue">Add new book</a>
+        <a th:href="@{/library/newBook}" class="w3-button w3-blue">Add new book</a>
     </p>
 
 </div>
