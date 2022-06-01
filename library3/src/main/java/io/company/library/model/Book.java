@@ -7,8 +7,8 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor
+@ToString
 @Entity(name="Book")
 @Table(name="BOOK_TABLE")
 public class Book {
@@ -25,7 +25,6 @@ public class Book {
     @Column(name="ISBN")
     private String isbn;
 
-    @JsonIgnore
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(	name = "LIBRARY_BOOK_JOIN_TABLE",
                 joinColumns = { @JoinColumn(name = "BOOK_FK") },
@@ -40,14 +39,4 @@ public class Book {
         this.isbn = isbn;
     }
 
-    @Override
-    public String toString() {
-        return "Book{" +
-                "bookId=" + bookId +
-                ", title='" + title + '\'' +
-                ", pages=" + pages +
-                ", publishedYear=" + publishedYear +
-                ", isbn='" + isbn + '\'' +
-                '}';
-    }
 }

@@ -1,7 +1,6 @@
 package io.company.library.model;
 
 import lombok.*;
-
 import javax.persistence.*;
 
 @Getter

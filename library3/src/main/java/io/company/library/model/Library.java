@@ -24,14 +24,14 @@ public class Library {
     @OneToOne(mappedBy = "library", cascade = CascadeType.ALL)
     private Address address;
 
-    @ManyToMany(mappedBy = "libraries", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "libraries", cascade = CascadeType.ALL,
+                fetch = FetchType.EAGER)
     private List<Book> books = new ArrayList<>();
 
     //constructor without ID
     public Library (String name, int qtyItems){
         this.name = name;
         this.qtyItems = qtyItems;
-
     }
 
 }
