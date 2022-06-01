@@ -35,10 +35,12 @@ public class BookService {
 
     public List<Book> queryBooksFromArray() {
 
-        System.out.println("Books" + books);
+        //System.out.println("Books" + books);
 
         return books;
     }
+
+
 
 
 }
