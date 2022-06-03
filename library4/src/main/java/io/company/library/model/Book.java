@@ -9,8 +9,7 @@ import java.util.List;
 
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor
 @ToString
-@Entity(name="Book")
-@Table(name="BOOK_TABLE")
+//book class is NOT an entity, it is a PÒJO
 public class Book {
 
     @Id
@@ -41,6 +40,7 @@ public class Book {
         this.pages = pages;
         this.publishedYear = publishedYear;
         this.isbn = isbn;
+       // this.bookId = UUID.randomUUID();
     }
 
 }
