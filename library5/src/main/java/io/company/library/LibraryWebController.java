@@ -7,37 +7,40 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping("/mylibrary")
+@RequestMapping("/library")
 public class LibraryWebController {
 
     @Autowired
     BookService bookService;
 
-    @RequestMapping("/home")
+    @RequestMapping("/books")
     public String getWeb (Model containerToView) {
 
         containerToView.addAttribute("booksfromController",
-                bookService.queryBooksFromArray());
-        containerToView.addAttribute("miabuela",
-                "too much love");
-        containerToView.addAttribute("qty students in this class",
-                25);
+                bookService.getAllBooks());
 
-
-        //System.out.println("Controller Web request ...");
-
-        return "web";
+        return "showBooks";
     }
+    @RequestMapping("/newBook")
+    public String newBook (){
+
+        return "newBook";
+    }
+
 
     @RequestMapping("/deleteBook")
     public String deleteBook(@RequestParam String titleFromView){
 
-        System.out.println("bookTilte" + titleFromView);
+        System.out.println("titleFromView" + titleFromView);
+        bookService.deleteBookByTitle(titleFromView);
 
-        return "bookdeleted";
+        return "showBooks";
 
 
     }
+
+
+
 
 
 }

@@ -1,6 +1,9 @@
-package io.company.library;
+package io.company.library.service;
 
 import java.util.Optional;
+
+import io.company.library.model.Book;
+import io.company.library.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +15,7 @@ public class BookService {
 
     public Iterable<Book> getAllBooks() {
 
-        Iterable<Book> books = bookRepository.findAll();
+       Iterable<Book> books = bookRepository.findAll();
 
         return books;
     }
