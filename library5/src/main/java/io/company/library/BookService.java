@@ -48,6 +48,11 @@ public class BookService {
         return bookRepository.save(book);
     }
 
+    public void deleteBook(Book book) {
+
+        bookRepository.delete(book);
+    }
+
 
 
 

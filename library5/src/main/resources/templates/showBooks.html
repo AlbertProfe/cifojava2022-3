@@ -9,6 +9,7 @@
     <h1>Spring Boot Books Example .....</h1>
     <h3>table of books from @Controller @Service @Repository and H2 DB</h3>
 
+
     <table class="w3-table-all w3-hoverable" >
         <tr th:each="book:${booksfromController}">
 
@@ -19,7 +20,7 @@
             <td th:text="${book.publishedYear}"></td>
             <td th:text="${book.author}"></td>
 
-            <td> <a th:href ="@{deleteBook(titleFromView=${book.title})}"
+            <td> <a th:href ="@{deleteBook(bookIdFromView=${book.bookId})}"
                     class="w3-button w3-red">  Delete this book </a> </td>
 
             <td> <a th:href ="@{updateBook(titleFromView=${book.title})}"

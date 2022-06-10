@@ -10,7 +10,7 @@ import java.util.List;
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor
 @ToString
 //book class is NOT an entity, it is a PÒJO
-public class Book {
+public abstract class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
