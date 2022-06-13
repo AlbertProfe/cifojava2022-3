@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.Optional;
+
 @Controller
 @RequestMapping("/library")
 public class LibraryWebController {
@@ -39,6 +41,23 @@ public class LibraryWebController {
         //
         bookService.deleteBookById(id);
         return "redirect:books";
+    }
+
+    @RequestMapping("/updateBook")
+    public String updateBook(@RequestParam("bookIdFromView") Long id, Model model) {
+        //
+        Optional<Book> bookFound = bookService.findBookById(id);
+        if (bookFound.isPresent()) {
+            model.addAttribute("bookfromController", bookFound.get());
+            return "updateBook";
+        } else return "notfound.html";
+    }
+
+    @RequestMapping("/detailBook")
+    public String detailBook(@RequestParam("bookIdFromView") Long id) {
+        //
+        //bookService.updaetBookById(id);
+        return "detailBook";
     }
 
 }
