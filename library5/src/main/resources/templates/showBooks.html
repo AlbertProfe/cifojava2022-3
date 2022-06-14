@@ -12,9 +12,22 @@
     </div>
     <Br>
 
+    <p >Aeat Link</p>
+    <p th:text ="${aeatName}">Aeat Link</p>
+    <p >Aeat</p>
+    <p th:text ="${aeat}">Aeat</p>
+    <p >Never</p>
+    <p th:text ="${changeInLove}">Never</p>
+    <div >
+        <p><a th:href="@{/library/javafaker(qtyBooks=100)}" class="w3-button w3-cyan">Create fake books on H2 -100-</a></p>
+    </div>
+
+    <div >
+        <p><a th:href="@{/library/javafaker}" class="w3-button w3-blue">Create fake books on H2 -500-</a></p>
+    </div>
+
     <table class="w3-table-all w3-hoverable" >
         <tr>
-
             <td>BookId</td>
             <td>Title</td>
             <td>ISBN</td>
@@ -25,8 +38,6 @@
             <td>Update</td>
             <td>Detail</td>
         </tr>
-
-
         <tr th:each="book:${booksfromController}">
 
             <td th:text="${book.bookId}"></td>
@@ -51,6 +62,7 @@
     <p>
         <a th:href="@{/library/newBook}" class="w3-button w3-blue">Add new book</a>
     </p>
+
 
 </div>
 
