@@ -3,6 +3,8 @@ package io.company.library;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import java.util.Optional;
@@ -44,12 +46,15 @@ public class LibraryWebController {
         return "redirect:books";
     }
 
-    @RequestMapping("/replaceBook")
-    public String replaceBook(){
+    @PostMapping("/replaceBook/{idFromView}")
+    public String replaceBook(@PathVariable("idFromView") Long id, Book book){
+            //
+            Optional<Book> bookFound = bookService.findBookById(id);
+            if (bookFound.isPresent()) {
+                bookService.createBook(book);
+                return "redirect:/library/books";
+            } else  return "notfound.html";
 
-        //get book from view and update H2
-
-        return "redirect:books";
     }
 
     @RequestMapping("/updateBook")
