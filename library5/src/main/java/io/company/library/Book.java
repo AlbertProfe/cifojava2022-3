@@ -32,6 +32,10 @@ public class Book {
         this.isbn = isbn;
     }
 
+    public Book(String title) {
+        this.title = title;
+    }
+
     @Override
     public String toString() {
         return "Book{" +
