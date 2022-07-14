@@ -13,6 +13,7 @@ public class BookService {
     BookRepository bookRepository;
 
     public Page<Book> findPaginated(int pageNo, int pageSize) {
+
         Pageable pageable = PageRequest.of(pageNo - 1, pageSize);
         return bookRepository.findAll(pageable);
 
